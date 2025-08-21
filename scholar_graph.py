@@ -11,7 +11,7 @@ from bs4 import BeautifulSoup
 import networkx as nx
 from collections import defaultdict
 from pyvis.network import Network
-
+import matplotlib.colors as mcolors
 
 class Scholarnet:
     def __init__(self, dblp_url: str):
@@ -67,7 +67,10 @@ class Scholarnet:
 
         # Add edges (weighted)
         for (a, b), w in edge_weights.items():
-            self.graph.add_edge(a, b, weight=w, color="#B1C3EB2C")
+            base_color = mcolors.to_rgb("#8BA4DA")
+            norm = min(w / 10, 1.0)
+            darkened = tuple([c * (1 - 0.7 * norm) for c in base_color])
+            self.graph.add_edge(a, b, weight=w, color=mcolors.to_hex(darkened))
 
     def show(self, output="research_network.html",
              height="700px", width="100%", bg_color="#ECE9E9", font_color="#636060"):
