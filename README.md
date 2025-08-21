@@ -21,8 +21,8 @@ The tool allows you to explore academic collaboration networks directly from the
 Clone this repository and install dependencies:
 
 ```bash
-git clone https://github.com/yourusername/scholar-graph.git
-cd scholar-graph
+git clone https://github.com/zeshanalvi/Research_Network.git
+cd Research_Network
 pip install -r requirements.txt
 ```
 
